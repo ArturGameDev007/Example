@@ -21,29 +21,16 @@ namespace Assets.Scripts.DorExaple
         private void DetectedObject()
         {
             Vector3 directionForward = transform.forward;
-            Vector3 directionToTarget = (_enemy.transform.position - transform.position).normalized;
+            Vector3 directionTotarget = (_enemy.transform.position - transform.position).normalized;
 
-            float dotResult = Vector3.Dot(directionForward, directionToTarget);
+            float dotResult = Vector3.Dot(directionForward, directionTotarget);
 
-            if (dotResult > 0.5f)
-            {
-                Debug.Log("Враг спереди");
-            }
-            else if (dotResult < -0.5f)
-            {
-                Debug.Log("Враг сзади");
-            }
-            else if (Mathf.Abs(dotResult) > 0.1f)
-            {
-                Debug.Log("Враг рядом/сбоку");
-            }
+            string message =
+                (dotResult > 0.5f) ? "Враг спереди" :
+                (dotResult < -0.5f) ? "Враг сзади" :
+                (Mathf.Abs(dotResult) < 0.1f) ? "Враг рядом" : "Враг где-то еще";
 
-            //string message =
-            //    (dotResult > 0.5f) ? "Враг спереди" :
-            //    (dotResult < -0.5f) ? "Враг сзади" :
-            //    (Mathf.Abs(dotResult) < 0.1f) ? "Враг рядом" : "Враг где-то еще";
-
-            //Debug.Log(message);
+            Debug.Log(message);
         }
     }
 }

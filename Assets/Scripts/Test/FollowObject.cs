@@ -14,11 +14,14 @@ namespace Assets.Scripts.Test
 
         private void Move()
         {
-            Vector3 directionToPlayer = _player.transform.position - transform.position;
-            Vector3 normalizedDirection = directionToPlayer.normalized;
+            Vector3 directionToTarget = _player.transform.position - transform.position;
+            Vector3 normalizeDirection = directionToTarget.normalized;
 
-            Vector3 move = normalizedDirection * _speed * Time.deltaTime;
+            Vector3 move = normalizeDirection * _speed * Time.deltaTime;
+
             transform.position += move;
+            //transform.position = transform.position + move; идентично
+            //Используя +=, вы заставляете объект шагать из текущей точки в сторону цели.
         }
     }
 }

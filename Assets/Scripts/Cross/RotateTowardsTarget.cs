@@ -12,11 +12,13 @@ public class RotateTowardsTarget : MonoBehaviour
 
     private void RotateTowards()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 directionTotarget = (_targetEnemy.position - transform.position).normalized;
+        Vector3 forward = transform.forward;
+        Vector3 directionToTarget = (_targetEnemy.position - transform.position).normalized;
 
-        Vector3 rotateAxis = Vector3.Cross(forward, directionTotarget);
+        Vector3 crossResult = Vector3.Cross(forward, directionToTarget);
 
-        transform.Rotate(rotateAxis, _rotationSpeed * Time.deltaTime);
+        float speedRotate = _rotationSpeed * Time.deltaTime;
+
+        transform.Rotate(crossResult, speedRotate);
     }
 }

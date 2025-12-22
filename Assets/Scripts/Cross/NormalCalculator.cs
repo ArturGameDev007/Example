@@ -12,10 +12,11 @@ public class NormalCalculator : MonoBehaviour
 
     private void Result()
     {
+        Vector3 forward = transform.forward;
         Vector3 directionToTarget = _target.position - transform.position;
         directionToTarget.y = 0;
 
-        Vector3 crossProductResult = Vector3.Cross(transform.forward, directionToTarget.normalized);
+        Vector3 crossProductResult = Vector3.Cross(forward, directionToTarget.normalized);
 
         if (crossProductResult.y > 0)
         {
